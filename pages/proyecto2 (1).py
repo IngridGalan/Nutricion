@@ -6,6 +6,10 @@ import kagglehub
 import zipfile
 import os
 
+if (parentNode.contains(childNode)) {
+    parentNode.removeChild(childNode);
+}
+
 # Download latest version
 path = kagglehub.dataset_download("bitanianielsen/nutrition-daily-meals-in-diseases-cases")
 folder_path = path;
