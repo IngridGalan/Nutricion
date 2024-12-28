@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -24,62 +22,6 @@ df = pd.read_csv(csv_path)
 print("Path to dataset files:", path)
 
 df
-
-"""# Hipotesis
-
-## Hipotesis 1: Nivel de actividad
-Los pacientes con un nivel de actividad menor o igual a moderado y que ingieren mas calorias de su nivel recomendado son más propensos a padecer múltiples enfermedades, incluyendo aquellas consideradas graves como hipertensión y enfermedades del corazón y renales.
-
-## Hipotesis 2: Diferencia de ingesta calórica
-Las comidas diseñadas para enfermedades metabólicas tienen una ingesta calórica significativamente menor que las diseñadas para enfermedades cardiovasculares.
-
-## Hipotesis 3: Restricción proteica y daño renal crónico
-Los pacientes con enfermedades renales crónicas que siguen dietas restringidas en proteínas experimentan una menor progresión del daño renal que aquellos con alimentación no controladas.
-
-## Hipotesis 4: Consumo de azúcar y proteína en dependecia de la dieta
-Las personas que prefieren una dieta vegetariana tienen un consumo de proteínas más bajo pero un consumo de azúcar más alto en comparación con quienes siguen una dieta omnívora.
-
-##Hipotesis 5
-Las personas con un mayor consumo de fibra tienden a tener un peso corporal promedio más bajo en comparación con aquellas con un consumo reducido de fibra.
-
-Las mujeres con un consumo de fibra superior a 23 gramos al día tienen un peso corporal promedio inferior a 74 kilogramos, mientras que para los hombres, aquellos con un consumo de fibra superior a 34 gramos al día tienen un peso corporal promedio inferior a 81 kilogramos.
-
-# Analisis Exploratorio
-
-## Descripcion de dataset
-
-El dataset recopila la informacion de personas que padecen enfermedades relacionadas al peso corporal. Para cada una de las personas se cuenta con la siguiente informacion:
-
-- Edad
-- Genero
-- Altura, medida en cm.
-- Peso, medido en kilogramos.
-- Nivel de actividad: es una columna cualitativa que especifica el que tan fisicamente activa es la persona, se tienen los niveles sedentario, ligeramente activo, moderadamente activo, muy activo y extremadamente activo.
-- Dieta preferida: es una columna cualitativa que especifica el tipo de comida que prefiere el paciente, se tienen las opciones omnivoro, vegano, vegetariano, pescetariano.
-- Objetivo de calorias diarias: es una columna cuantitativa que especifica las calorias a quemar en el dia a dia.
-- Proteina: es una columna cuantitativa que mide la cantidad de gramos de proteina que consume la persona en un dia.
-- Azucar: es una columna cuantitativa que mide la cantidad de gramos de azucar que consume la persona en un dia.
-- Sodio: es una columna cuantitativa que mide la cantidad de gramos de sodio que consume la persona en un dia.
-- Carbohidratos: es una columna cuantitativa que mide la cantidad de gramos de carbohidratos que consume la persona en un dia.
-- Fibra: es una columna cuantitativa que mide la cantidad de gramos de fibra que consume la persona en un dia.
-- Grasas: es una columna cuantitativa que mide la cantidad de gramos de grasas que consume la persona en un dia.
-- Calorias: es una columna cuantitativa que mide las calorias que actualemente consume la persona.
-
-- Las columnas de sugerencia sobre Desayuno, almuerzo, cena y snack, son columnas cualitativas que expresan las comidas que han sido sugeridas a cada paciente, debido a que es una de las partes mas personalizadas no se tiene una clasificacion directa sobre las comidas, ya que para cada tiempo de comida existe una comida que es la mas recomendada pero tambien aparecen casos en los que una comida solo ha sido recomendada a un paciente.
-
-  - Desayuno mas recomendado: "Smoothie with protein powder", 210 recomendaciones
-  - Almuerzo mas recomendado: "Lentil soup with whole wheat bread", 161 recomendaciones
-  - Cena mas recomendada: "Salmon with roasted vegetables", 175 recomendaciones
-  - Snack mas recomendado: "Trail mix" , 296 recomendaciones
-
-- Enfermedad: es una columna cualitativa que detalla la o las enfermedades que padece el paciente. Las posibles enfermedades son:
-  - Diabetes
-  - Acne
-  - Perdida de peso
-  - Hipertension
-  - Enfermedad cardíaca
-  - Enfermedad Renal
-"""
 
 print(f'Desayuno: {df["Breakfast Suggestion"].value_counts().idxmax()}, {df["Breakfast Suggestion"].value_counts().max()}')
 print(f'Almuerzo: {df["Lunch Suggestion"].value_counts().idxmax()}, {df["Lunch Suggestion"].value_counts().max()}')
