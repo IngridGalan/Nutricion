@@ -6,15 +6,12 @@ import kagglehub
 import zipfile
 import os
 
-if (parentNode.contains(childNode)) {
-    parentNode.removeChild(childNode);
-}
 
-# Download latest version
+#Download latest version
 path = kagglehub.dataset_download("bitanianielsen/nutrition-daily-meals-in-diseases-cases")
 folder_path = path;
 
-# Busca el archivo CSV en la carpeta
+#Busca el archivo CSV en la carpeta
 csv_path = None
 for file_name in os.listdir(folder_path):
     if file_name.endswith(".csv"):
@@ -444,71 +441,3 @@ print(f"Porcentaje que cumple la hipótesis: {(len(hombres_cumplen_hipotesis)/le
 
 # Correlación entre fibra y peso para cada género
 df.groupby('Gender').apply(lambda x: x['Fiber'].corr(x['Weight']))
-
-"""#Modelo de Machine Learning
-
-Hemos propuesto utilizar un modelo de aprendizaje supervisado, ya que contamos con etiquetas explícitas o podemos derivarlas (como peso, consumo calórico, etc.)
-
-El modelo de Decision Tree (árbol de decisión) es un algoritmo de modelo de aprendizaje supervisado.
-El árbol de decisión funciona descomponiendo el conjunto de datos en subconjuntos más pequeños basándose en condiciones o reglas de decisión. Primero el algoritmo evalúa todas las características (las columnas) para determinar cuál divide mejor los datos según el objetivo. Seguidamente se divide en nodos que cada uno  representa una decisión basada en el valor de una característica. El árbol crece dividiendo datos en ramas hasta que se cumple una de las condiciones de parada: (No hay más datos que dividir, Se alcanza la profundidad máxima definida por el usuario, El nodo contiene datos homogéneos o suficientemente similares). Por último, para predecir, el modelo sigue las reglas de decisión desde la raíz hasta una hoja, donde asigna la clase o valor.
-
-## Decision Tree
-"""
-
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-# **1. Preprocesamiento**
-# Convertir Activity Level a numérico (si aún no se ha hecho)
-activity_mapping = {'Sedentary': 0, 'Lightly Active': 1, 'Moderately Active': 2}
-data_filtered['Activity Mapped'] = data_filtered['Activity Level'].map(activity_mapping)
-
-# Seleccionar características (X) y etiquetas (y)
-X = data_filtered[['Calorie_Excess', 'Activity Mapped']]  # Puedes agregar más características si las tienes.
-y = data_filtered[['Heart Disease', 'Kidney Disease', 'Hypertension']]
-
-# Crear una etiqueta única para predecir cualquier enfermedad
-y['Has Disease'] = y.max(axis=1)
-
-# **2. Dividir en conjunto de entrenamiento y prueba**
-X_train, X_test, y_train, y_test = train_test_split(X, y['Has Disease'], test_size=0.2, random_state=42)
-
-# **3. Entrenar el modelo**
-clf = DecisionTreeClassifier(random_state=42)
-clf.fit(X_train, y_train)
-
-# **4. Predicción y Evaluación**
-y_pred = clf.predict(X_test)
-
-# Métricas de evaluación
-print("Accuracy Score:", accuracy_score(y_test, y_pred))
-print("\nClassification Report:")
-print(classification_report(y_test, y_pred))
-
-# Matriz de confusión
-conf_matrix = confusion_matrix(y_test, y_pred)
-sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', xticklabels=['No Disease', 'Has Disease'], yticklabels=['No Disease', 'Has Disease'])
-plt.title("Matriz de Confusión")
-plt.xlabel("Predicción")
-plt.ylabel("Realidad")
-plt.show()
-
-# Visualizar la Matriz de Confusión
-import seaborn as sns
-import matplotlib.pyplot as plt
-from sklearn.metrics import confusion_matrix
-
-# Calcular la Matriz de Confusión
-conf_matrix = confusion_matrix(y_test, y_pred)
-
-# Dibujar el gráfico
-plt.figure(figsize=(8, 6))
-sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', xticklabels=["No Disease", "Has Disease"], yticklabels=["No Disease", "Has Disease"])
-plt.title("Matriz de Confusión")
-plt.xlabel("Predicción")
-plt.ylabel("Realidad")
-plt.show()
