@@ -1,5 +1,5 @@
 streamlit
-plotly
 pandas
-skicit-learn
-os-sys
+scikit-learn
+matplotlib
+seaborn
