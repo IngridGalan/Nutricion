@@ -169,3 +169,14 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Ignorar archivos y carpetas que no necesitamos seguir en Git
+*.csv
+*.log
+__pycache__
+.venv
+.idea
+*.pyc
+/models
+/data
+/utils
